@@ -28,9 +28,9 @@ class App {
     this.pyodideManager = new PyodideManager();
     this.autograderEngine = null;
     this.feedbackGenerator = new FeedbackGenerator();
-    this.assignmentLoader = new AssignmentLoader('/assignments.json');
+    this.assignmentLoader = new AssignmentLoader('assignments.json');
     this.sessionManager = new SessionManager();
-    this.starterTemplateLoader = new StarterTemplateLoader('/templates');
+    this.starterTemplateLoader = new StarterTemplateLoader('templates');
 
     this.codeEditor = new CodeEditor();
     this.assignmentSelector = new AssignmentSelector();

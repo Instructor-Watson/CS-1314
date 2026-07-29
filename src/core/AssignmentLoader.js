@@ -5,7 +5,7 @@
  */
 
 export class AssignmentLoader {
-  constructor(assignmentsPath = '/assignments.json') {
+  constructor(assignmentsPath = 'assignments.json') {
     this.assignmentsPath = assignmentsPath;
     this.assignments = null;
     this.maxRetries = 3;

@@ -9,7 +9,7 @@ export class AssignmentViewer {
   constructor() {
     this.container = null;
     this.assignment = null;
-    this.instructionsBasePath = '/instructions';
+    this.instructionsBasePath = 'instructions';
   }
 
   /**

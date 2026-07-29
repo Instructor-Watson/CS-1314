@@ -1,5 +1,5 @@
 export class StarterTemplateLoader {
-  constructor(templatesBasePath = '/templates') {
+  constructor(templatesBasePath = 'templates') {
     this.templatesBasePath = templatesBasePath.replace(/\/$/, '');
     this.cache = new Map();
   }

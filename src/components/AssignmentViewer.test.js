@@ -98,7 +98,7 @@ describe('AssignmentViewer', () => {
 
       const instructionsButton = container.querySelector('.assignment-instructions-button');
       expect(instructionsButton).toBeTruthy();
-      expect(instructionsButton.getAttribute('href')).toBe('/instructions/follow_steps.pdf');
+      expect(instructionsButton.getAttribute('href')).toBe('instructions/follow_steps.pdf');
       expect(instructionsButton.getAttribute('target')).toBe('_blank');
       expect(instructionsButton.textContent).toContain('Open Instructions PDF');
       expect(instructionsButton.textContent).toContain('Opens in a new tab');
@@ -177,11 +177,11 @@ describe('AssignmentViewer', () => {
 
   describe('instructions URL handling', () => {
     it('should build the public instructions URL from a filename', () => {
-      expect(viewer.buildInstructionsUrl('hello_world.pdf')).toBe('/instructions/hello_world.pdf');
+      expect(viewer.buildInstructionsUrl('hello_world.pdf')).toBe('instructions/hello_world.pdf');
     });
 
     it('should normalize a leading slash in the instructions filename', () => {
-      expect(viewer.buildInstructionsUrl('/hello_world.pdf')).toBe('/instructions/hello_world.pdf');
+      expect(viewer.buildInstructionsUrl('/hello_world.pdf')).toBe('instructions/hello_world.pdf');
     });
 
     it('should throw for an invalid instructions filename', () => {
