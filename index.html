@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Submission Check</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <h1>Python Submission Check</h1>
+      <div class="header-controls">
+        <div id="status-indicator" class="status-indicator">
+          <span class="status-text">Initializing...</span>
+        </div>
+        <div class="header-toolbar">
+          <div id="header-transfer-actions" class="header-transfer-actions">
+            <!-- Export/import buttons will be populated here -->
+          </div>
+          <div class="assignment-selector-shell">
+            <label for="assignment-select" class="assignment-selector-label">Assignment</label>
+            <div id="assignment-list" class="assignment-selector-container">
+              <!-- Assignment selector will be populated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="workspace">
+        <div class="assignment-view">
+          <div id="assignment-details" class="assignment-details">
+            <p class="placeholder">Select an assignment to get started</p>
+          </div>
+        </div>
+
+        <div id="workspace-empty-state" class="workspace-empty-state is-loading" data-state="loading">
+          <div class="workspace-loading-state" aria-live="polite">
+            <div class="python-loader" aria-hidden="true">
+              <div class="python-loader-orbit python-loader-orbit-top">
+                <span class="python-loader-eye python-loader-eye-left"></span>
+                <span class="python-loader-eye python-loader-eye-right"></span>
+              </div>
+              <div class="python-loader-code">&lt;/&gt;</div>
+              <div class="python-loader-orbit python-loader-orbit-bottom"></div>
+            </div>
+            <div class="workspace-loading-copy">
+              <span class="workspace-loading-badge">Preparing Python Lab</span>
+              <h2 id="workspace-loading-title">Waking up the Python runtime</h2>
+              <p class="workspace-loading-lead">Your browser is setting up everything needed to run Python locally.</p>
+            </div>
+            <div class="workspace-loading-current">
+              <span class="workspace-loading-current-label">Currently</span>
+              <p id="workspace-loading-message">Initializing the browser-based Python environment...</p>
+            </div>
+          </div>
+          <div class="workspace-ready-state" hidden>
+            <h2>Choose an assignment</h2>
+            <p>Select an assignment from the dropdown in the top right to open the editor and test runner, or import your saved code file from a previous browser first.</p>
+            <div id="workspace-ready-actions" class="workspace-ready-actions">
+              <!-- Ready state actions will be populated here -->
+            </div>
+            <p id="workspace-ready-feedback" class="workspace-ready-feedback" hidden aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div id="loading-handoff-overlay" class="loading-handoff-overlay" hidden aria-hidden="true">
+          <div class="loading-handoff-orb">
+            <span class="loading-handoff-core"></span>
+            <span class="loading-handoff-glyph">&lt;/&gt;</span>
+            <span class="loading-handoff-glyph">{ }</span>
+            <span class="loading-handoff-glyph">def</span>
+            <span class="loading-handoff-glyph">[]</span>
+            <span class="loading-handoff-glyph">py</span>
+          </div>
+          <div class="loading-handoff-wisp"></div>
+        </div>
+
+        <div class="editor-container" hidden>
+          <div class="editor-header">
+            <div class="editor-title-group">
+              <h3>Code Editor</h3>
+              <span class="editor-save-note">Autosaves locally</span>
+            </div>
+            <button id="submit-button" class="submit-button" disabled>
+              Run Tests
+            </button>
+          </div>
+          <div class="editor-resize-shell">
+            <div id="code-editor" class="code-editor"></div>
+            <div class="editor-resize-handle" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="results-container" hidden>
+          <h3>Test Results</h3>
+          <div id="feedback-display" class="feedback-container">
+            <!-- Feedback will be displayed here -->
+          </div>
+          <div id="results-panel" class="results-panel">
+            <p class="placeholder">Submit your code to see test results</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="restart-assignment-modal" class="modal-backdrop" hidden>
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="restart-assignment-title"
+      aria-describedby="restart-assignment-description"
+    >
+      <div class="modal-badge">Restart Assignment</div>
+      <h2 id="restart-assignment-title" class="modal-title">Reload starter code?</h2>
+      <p id="restart-assignment-description" class="modal-description">
+        This will replace your current code with the original template for this assignment.
+      </p>
+      <p class="modal-note">
+        Your saved draft for this assignment will be removed from this browser.
+      </p>
+      <div class="modal-actions">
+        <button id="restart-assignment-cancel" type="button" class="modal-button modal-button-secondary">
+          Cancel
+        </button>
+        <button id="restart-assignment-confirm" type="button" class="modal-button modal-button-danger">
+          Restart Assignment
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="import-saved-code-modal" class="modal-backdrop" hidden>
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="import-saved-code-title"
+      aria-describedby="import-saved-code-description"
+    >
+      <div class="modal-badge">Import Saved Code</div>
+      <h2 id="import-saved-code-title" class="modal-title">Import saved code from another browser?</h2>
+      <p id="import-saved-code-description" class="modal-description">
+        Importing a saved code file will overwrite any assignments currently saved in this browser.
+      </p>
+      <p class="modal-note">
+        This replaces the existing local saved-code datastore before loading the imported file.
+      </p>
+      <div class="modal-actions">
+        <button id="import-saved-code-cancel" type="button" class="modal-button modal-button-secondary">
+          Cancel
+        </button>
+        <button id="import-saved-code-confirm" type="button" class="modal-button modal-button-danger">
+          Choose File to Import
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+
+

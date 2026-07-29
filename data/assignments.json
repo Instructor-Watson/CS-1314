@@ -1,0 +1,124 @@
+{
+  "assignments": [
+    {
+      "id": "hello-world",
+      "title": "Hello World - Python Basics",
+      "description": "Write a program that prints 'Hello World!'",
+      "instructions": "hello_world_assignment_instructions.pdf",
+      "starterCode": "hello_world_assignment_template.py",
+      "testSuiteFile": "tests/test_hello_world.py"
+    },
+    {
+      "id": "flow-control",
+      "title": "Weather Adviser - Basic Flow Control",
+      "description": "The Weather Adviser Program",
+      "instructions": "flow_control_assignment_instructions.pdf",
+      "starterCode": "flow_control_assignment_template.py",
+      "testSuiteFile": "tests/test_flow_control.py"
+    },
+    {
+      "id": "dice-game",
+      "title": "Dice Game - Loops",
+      "description": "Simulate rolling a dice using Python",
+      "instructions": "dice_game_instructions.pdf",
+      "starterCode": "dice_game_assignment_template.py",
+      "testSuiteFile": "tests/test_dice_game.py"
+    },
+    {
+      "id": "functions",
+      "title": "Expense Tracker - Functions",
+      "description": "Building a personal expense tracker",
+      "instructions": "function_assignment_instructions.pdf",
+      "starterCode": "function_assignment_template.py",
+      "testSuiteFile": "tests/test_functions.py"
+    },
+    {
+      "id": "chpt1-review",
+      "title": "Chapter 1 Review",
+      "description": "Review material covered in Chapter 1 of Automate the Boring Stuff",
+      "instructions": "chapter1_review_instructions.pdf",
+      "starterCode": "chapter1_review_template.py",
+      "testSuiteFile": "tests/test_chpt1_review.py"
+    },
+    {
+      "id": "chpt2-review",
+      "title": "Chapter 2 Review",
+      "description": "Review material covered in Chapter 2 of Automate the Boring Stuff",
+      "instructions": "chapter2_review_instructions.pdf",
+      "starterCode": "chapter2_review_template.py",
+      "testSuiteFile": "tests/test_chpt2_review.py"
+    },
+    {
+      "id": "chpt3-review",
+      "title": "Chapter 3 Review",
+      "description": "Review material covered in Chapter 3 of Automate the Boring Stuff",
+      "instructions": "chapter3_review_instructions.pdf",
+      "starterCode": "chapter3_review_template.py",
+      "testSuiteFile": "tests/test_chpt3_review.py"
+    },
+    {
+      "id": "debugging",
+      "title": "Debugging - Exception Handling",
+      "description": "Catching errors and exceptions so they don't stop your program.",
+      "instructions": "debugging_assignment_instructions.pdf",
+      "starterCode": "debugging_assignment_template.py",
+      "testSuiteFile": "tests/test_debugging.py"
+    },
+    {
+      "id": "lists",
+      "title": "Expense Tracker Improved - Lists",
+      "description": "Improve the personal expense tracker",
+      "instructions": "list_assignment_instructions.pdf",
+      "starterCode": "list_assignment_template.py",
+      "testSuiteFile": "tests/test_lists.py"
+    },
+    {
+      "id": "dictionaries",
+      "title": "Dictionaries",
+      "description": "Review the use of Dictionaries in Python",
+      "instructions": "dictionaries_assignment_instructions.pdf",
+      "starterCode": "dictionaries_template.py",
+      "testSuiteFile": "tests/test_dictionaries.py"
+    },
+    {
+      "id": "strings",
+      "title": "String Manipulation",
+      "description": "Review the use of String Manipulation in Python",
+      "instructions": "strings_assignment_instructions.pdf",
+      "starterCode": "strings_assignment_template.py",
+      "testSuiteFile": "tests/test_strings.py"
+    },
+    {
+      "id": "regex",
+      "title": "Regular Expressions",
+      "description": "Review the use of Regular Expressions (Regex) in Python",
+      "instructions": "regex_assignment_instructions.pdf",
+      "starterCode": "regex_assignment_template.py",
+      "testSuiteFile": "tests/test_regex.py"
+    },
+    {
+      "id": "file-operations",
+      "title": "File Operations",
+      "description": "Review the use of File Operations in Python",
+      "instructions": "file_operations_assignment_instructions.pdf",
+      "starterCode": "file_operations_assignment_template.py",
+      "testSuiteFile": "tests/test_file_operations.py"
+    },
+    {
+      "id": "adv-file-operations",
+      "title": "Advanced File Operations",
+      "description": "Review the use of Advanced File Operations in Python",
+      "instructions": "adv_file_operations_assignment_instructions.pdf",
+      "starterCode": "advanced_file_operations_assignment_template.py",
+      "testSuiteFile": "tests/test_adv_file_operations.py"
+    },
+    {
+      "id": "weather-app",
+      "title": "Weather App - Web Scraping",
+      "description": "Pulling website data into Python and extracting information",
+      "instructions": "weather_app_assignment_instructions.pdf",
+      "starterCode": "weather_app_assignment_template.py",
+      "testSuiteFile": "tests/test_weather_app.py"
+    }
+  ]
+}
