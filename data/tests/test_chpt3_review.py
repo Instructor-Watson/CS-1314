@@ -1,10 +1,9 @@
+import sys
 import unittest
 from unittest.mock import patch
 
 
 class TestChapterThreeReview(unittest.TestCase):
-    INVALID_MESSAGE = "That's not a valid number. Please try again."
-
     def test_one_invalid_entry_before_valid_number(self):
         """retries after one invalid entry and then squares the valid number"""
         self.run_test_case(
@@ -46,7 +45,16 @@ class TestChapterThreeReview(unittest.TestCase):
         )
 
     def run_test_case(self, inputs, invalid_attempts, expected_final_line):
-        with patch('builtins.input', side_effect=list(inputs)):
+        output_before_inputs = []
+        supplied_inputs = iter(inputs)
+
+        def provide_input(prompt=''):
+            output_before_inputs.append(sys.stdout.getvalue())
+            return next(supplied_inputs)
+
+        with patch('builtins.input', side_effect=list(inputs)) as mocked_input:
+            # Keep the input list visible to the application's input-case reader.
+            mocked_input.side_effect = provide_input
             result = run_student_code()
 
         if result['errorType'] == 'SystemExit':
@@ -60,15 +68,25 @@ class TestChapterThreeReview(unittest.TestCase):
             )
 
         output = result['stdout'].strip()
-        output_lines = output.splitlines() if output else []
-        final_line = output_lines[-1] if output_lines else ''
-        invalid_message_count = output.count(self.INVALID_MESSAGE)
-
-        if invalid_message_count != invalid_attempts:
+        if mocked_input.call_count != len(inputs):
             self.fail(
-                f"Expected the invalid-number message to appear {invalid_attempts} times, but it appeared {invalid_message_count} times.\n\n"
-                f"Your output:\n----\n{output or '[no output]'}\n----"
+                "Keep asking for input until a valid number is entered."
             )
+
+        # The assignment permits any error-message wording or formatting.
+        # Check for feedback after each invalid entry, before the next prompt.
+        for attempt in range(invalid_attempts):
+            feedback = output_before_inputs[attempt + 1][len(output_before_inputs[attempt]):]
+            if not feedback.strip():
+                self.fail(
+                    f"Print an error message after invalid input {inputs[attempt]!r} "
+                    "before asking for another number. You may choose your own wording."
+                )
+
+        # Exclude earlier feedback, even when it was printed without a newline.
+        final_output = result['stdout'][len(output_before_inputs[-1]):].strip()
+        output_lines = final_output.splitlines() if final_output else []
+        final_line = output_lines[-1] if output_lines else ''
 
         if final_line != expected_final_line:
             self.fail(
